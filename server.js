@@ -5,8 +5,10 @@ const app = express();
 app.use('/css', express.static(__dirname + '/css'));
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.listen(3000, function() {
-  console.log('listening on 3000')
+var port = process.env.PORT || 8080;
+
+app.listen(port, function() {
+  console.log('listening on ' + port);
 });
 
 app.get('/', (req, res) => {
