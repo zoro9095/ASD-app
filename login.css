@@ -53,6 +53,22 @@ body{
 .sideleft h1{
         color: #bcedff;
 }
+.FAQstyle h1{
+        color: #bcedff;
+        font-size: 38px;
+        text-align: center;
+        margin-top:120px;
+}
+.FAQstyle h4{
+        color: #bcedff;
+        font-size: 22px; 
+        margin-left: 150px;
+}
+.FAQstyle p{
+        color: #bcedff;
+        font-size: 18px;  
+        margin-left: 150px;
+}
 .sideleft h4{
         color: #bcedff;
 }
@@ -160,5 +176,7 @@ input[type="submit"]:hover{
         border-right: 2px solid white;
 	padding:0 10px;
 }
+
+
  
  
