@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subject Review</title>
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="./js/postreview.js"></script>
+  <link rel="stylesheet" type="text/css" href="./CSS/style.css" />
+  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+</head>
+
+
+<body>
+  <div class="mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout-icon"></div>
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout__title">Subject Review
+        <span class="page-title-span"> | </span>
+        <span class="page-title-span"> Post Review </span>
+      </span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+        <button id="homeBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+          Home
+        </button>
+        <button id="logoutBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+          Logout
+        </button>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Personal Management</a>
+    </nav>
+  </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="university">
+      <label class="mdl-textfield__label" for="university">University</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="courseID">
+      <label class="mdl-textfield__label" for="courseID">Course ID</label>
+    </div>
+    <select id="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <div class="form__group">
+      <textarea id="review" class="form__field" placeholder="Your Review" rows="6"></textarea>
+      <label for="review" class="form__label">Your Review</label>
+    </div>
+    <button id="postReviewBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+      Submit
+    </button>
+    </div>
+
+
+</body>
+</html>
+
