@@ -1,203 +1,201 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <title>Personal Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+	<head>
+		<meta charset="utf-8">
+		<title>Personal Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			
+			body {
+				margin: 0;
+			}
+			
+			.header {
+				background-color: #f97300;
+				padding: 20px;
+				text-align: center;
+			}
+			
+			.topnav {
+				overflow: hidden;
+				background-color: #333;
+			}
+			
+			.topnav a {
+				float: left;
+				display: block;
+				color: #f2f2f2;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+			}
+			
+			.topnav a:hover {
+				background-color: #ddd;
+				color: black;
+			}
+			
+			.button {
+				background-color: #555555;
+				/* Black */
+				border: none;
+				color: white;
+				padding: 4px 8px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 2px;
+				cursor: pointer;
+			}
+			
+			.button2 {
+				background-color: #f97300;
+			}
+			/* Blue */
+			
+			.button3 {
+				background-color: #f44336;
+			}
+			/* Red */
+		</style>
+	</head>
 
-        body {
-            margin: 0;
-        }
+	<body>
 
-        .header {
-            background-color: #f97300;
-            padding: 20px;
-            text-align: center;
-        }
+		<div class="header">
+			<h1><font color="#FFFFFF">Personal Page</font></h1>
+		</div>
 
-        .topnav {
-            overflow: hidden;
-            background-color: #333;
-        }
-
-            .topnav a {
-                float: left;
-                display: block;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-            }
-
-                .topnav a:hover {
-                    background-color: #ddd;
-                    color: black;
-                }
-
-        .button {
-            background-color: #555555; /* Black */
-            border: none;
-            color: white;
-            padding: 4px 8px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
-
-        .button2 {
-            background-color: #f97300;
-        }
-        /* Blue */
-        .button3 {
-            background-color: #f44336;
-        }
-        /* Red */
-    </style>
-</head>
-
-<body>
-
-    <div class="header">
-        <h1><font color="#FFFFFF">Personal Page</font></h1>
-    </div>
-
-    <div class="topnav">
-        <a href="personalpage.html">Personal Information</a>
-        <a href="mycomments.html">My Comments</a>
-    </div>
-    <br />
-    <br />
-    <table align="center">
-        <tr>
-            <td> Name</td>
-        </tr>
-        <tr>
-            <td>
-                <input value="" id="name" type="text" size="29">
-            </td>
-        </tr>
-        <tr>
-            <td>UserName</td>
-        </tr>
-        <tr>
-            <td>
-                <input value="" id="userName" type="text" size="29">
-            </td>
-        </tr>
-        <tr><td>PassWord</td></tr>
-        <tr>
-            <td>
-                <input value="" id="passWord" type="text" size="29">
-            </td>
-        </tr>
-        <tr><td>University</td></tr>
-        <tr>
-            <td>
-                <input value="" id="university" type="text" size="29">
-            </td>
-        </tr>
-        <tr><td>UserType</td></tr>
-        <tr>
-            <td>
-                <input value="" id="userType" type="text" size="29">
-            </td>
-        </tr>
-        <tr><td>Email</td></tr>
-        <tr>
-            <td>
-                <input value="" id="email" type="text" size="29">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="button" >
+		<div class="topnav">
+			<a href="personalpage.html">Personal Information</a>
+			<a href="mycomments.html">My Comments</a>
+		</div>
+		<br />
+		<br />
+		<table align="center">
+			<tr>
+				<td> Name</td>
+			</tr>
+			<tr>
+				<td>
+					<input value="" id="name" type="text" size="29">
+				</td>
+			</tr>
+			<tr>
+				<td>UserName</td>
+			</tr>
+			<tr>
+				<td>
+					<input value="" id="userName" type="text" size="29">
+				</td>
+			</tr>
+			<tr>
+				<td>PassWord</td>
+			</tr>
+			<tr>
+				<td>
+					<input value="" id="passWord" type="text" size="29">
+				</td>
+			</tr>
+			<tr>
+				<td>University</td>
+			</tr>
+			<tr>
+				<td>
+					<input value="" id="university" type="text" size="29">
+				</td>
+			</tr>
+			<tr>
+				<td>UserType</td>
+			</tr>
+			<tr>
+				<td>
+					<input value="" id="userType" type="text" size="29">
+				</td>
+			</tr>
+			<tr>
+				<td>Email</td>
+			</tr>
+			<tr>
+				<td>
+					<input value="" id="email" type="text" size="29">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button class="button">
                     Go Back
                 </button>
-            </td>
-            <td>
-                <button class="button button2" onclick="Save()">
+				</td>
+				<td>
+					<button class="button button2" onclick="Saves()">
                 Save
                 </button>
-            </td>
-        </tr>
-    </table>
+				</td>
+			</tr>
+		</table>
 
-    <script>
-        var config = {
-            apiKey: "AIzaSyAE4AgPBHNxsiYSWZVzKds0_YNZqXrq7WU",
-            authDomain: "asd-app-1debf.firebaseapp.com",
-            databaseURL: "https://asd-app-1debf.firebaseio.com",
-            projectId: "asd-app-1debf",
-            storageBucket: "",
-            messagingSenderId: "1067521630695",
-            appId: "1:1067521630695:web:606716bec5757e56"
-        };
+		<script>
+			var config = {
+				apiKey: "AIzaSyAE4AgPBHNxsiYSWZVzKds0_YNZqXrq7WU",
+				authDomain: "asd-app-1debf.firebaseapp.com",
+				databaseURL: "https://asd-app-1debf.firebaseio.com",
+				projectId: "asd-app-1debf",
+				storageBucket: "",
+				messagingSenderId: "1067521630695",
+				appId: "1:1067521630695:web:606716bec5757e56"
+			};
 
-        // Initialize Firebase
-        firebase.initializeApp(config);
-        var db = firebase.firestore();
-        var currentEmail = "";
-        firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                currentEmail = user.email;
-            }
-        });
-        function GetUserInfo() {
-            var currentUser;
-            var docRef = db.collection("users").doc(currentEmail);
+			// Initialize Firebase
+			firebase.initializeApp(config);
+			var db = firebase.firestore();
 
-            await docRef.get().then(function (doc) {
-                if (doc.exists) {
-                    currentUser = {
-                        email: doc.data().email,
-                        name: doc.data().name,
-                        password: doc.data().password,
-                        university: doc.data().university,
-                        userID: doc.data().userID,
-                        userName: doc.data().userName,
-                        userType: doc.data().userType
-                    };
-                    document.getElementById("name").value = currentUser.name;
-                    document.getElementById("userName").value = currentUser.userName;
-                    document.getElementById("passWord").value = currentUser.password;
-                    document.getElementById("university").value = currentUser.university;
-                    document.getElementById("userType").value = currentUser.userType;
-                    document.getElementById("email").value = currentUser.email;
-                }
-                else {
-                    console.log("document doesn't exist");
-                }
-            }).catch(function (error) {
-                console.log("Error getting document:", error);
-            });
+			GetUserInfo();
 
-        };
+			function GetUserInfo() {
 
+				var currentUser = firebase.auth().currentUser;
 
-        function Save() {
-            db.collection("users").doc(currentEmail).update({
-                email: document.getElementById("email").value,
-                name: document.getElementById("name").value,
-                password: document.getElementById("password").value,
-                university: document.getElementById("university").value,
-                userName: document.getElementById("userName").value,
-                userType: document.getElementById("userType").value
-            })
-        };
+				console.log(currentUser);
+				// User is signed in.
 
-    </script>
+				document.getElementById("name").value = currentUser.name;
+				document.getElementById("userName").value = currentUser.userName;
+				document.getElementById("passWord").value = currentUser.password;
+				document.getElementById("university").value = currentUser.university;
+				document.getElementById("userType").value = currentUser.userType;
+				document.getElementById("email").value = currentUser.email;
 
-</body>
+			};
+
+			function Saves() {
+				
+				var user = firebase.auth().currentUser;
+
+				user.updateProfile({
+				    email: document.getElementById("email").value,
+					name: document.getElementById("name").value,
+					password: document.getElementById("passWord").value,
+					university: document.getElementById("university").value,
+					userName: document.getElementById("userName").value,
+					userType: document.getElementById("userType").value
+				}).then(function() {
+					alert("successful");
+					// Update successful.
+				}).catch(function(error) {
+					// An error happened.
+				});
+			};
+		</script>
+
+	</body>
 </html>
