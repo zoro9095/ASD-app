@@ -44,3 +44,7 @@ app.get("/register", (req, res) => {
 app.get("/forgetpwd", (req, res) => {
   res.sendFile(__dirname + "/forgetpwd.html");
 });
+
+app.get("/editpersonal", (req, res) => {
+  res.sendFile(__dirname + "/editpersonal.html");
+});
