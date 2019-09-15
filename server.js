@@ -48,3 +48,44 @@ app.get("/forgetpwd", (req, res) => {
 app.get("/editpersonal", (req, res) => {
   res.sendFile(__dirname + "/editpersonal.html");
 });
+
+app.get("/admin", (req, res) => {
+  res.sendFile(__dirname + "/admin_system.html");
+});
+
+app.get("/comment", (req, res) => {
+  res.sendFile(__dirname + "/Comment_management.html");
+});
+
+app.get("/course", (req, res) => {
+  res.sendFile(__dirname + "/Course_management.html");
+});
+
+app.get("/form", (req, res) => {
+  res.sendFile(__dirname + "/Form.html");
+});
+
+app.get("/membership", (req, res) => {
+  res.sendFile(__dirname + "/Membership_management.html");
+});
+
+app.get("/uniinfo", (req, res) => {
+  res.sendFile(__dirname + "/Uni_info.html");
+});
+
+app.get("/uni", (req, res) => {
+  res.sendFile(__dirname + "/University_management.html");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+

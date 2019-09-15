@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<table width=100 border=1>   
+   <tr bgcolor='#f4f4f4'>  
+    <td>Country</td>  
+    <td>Logo</td>  
+	<td>ID</td>  
+	<td>University Name</td>  
+	<td>weblink</td>  
+   </tr>   
+   <tr>  
+   <td><input id="country" /></td>   
+   <td><input id="logo"/></td>  
+   <td><input id="ID"/></td>  
+   <td><input id="UniName"/></td>  
+   <td><input id="weblink"/></td>  
+   </tr>   
+</table>
+<input name="1" type="button" value="addUni" onclick="add_ajax()"/>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.6.0/firebase.js"></script>
+<script language="javascript">
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyAE4AgPBHNxsiYSWZVzKds0_YNZqXrq7WU",
+        authDomain: "asd-app-1debf.firebaseapp.com",
+        databaseURL: "https://asd-app-1debf.firebaseio.com",
+        projectId: "asd-app-1debf",
+        storageBucket: "asd-app-1debf.appspot.com",
+        messagingSenderId: "1067521630695",
+        appId: "1:1067521630695:web:606716bec5757e56"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    //实时数据库
+    var database = firebase.database();
+    var data = firebase.database().ref('/');
+    //云端数据库
+    var my_ = firebase.firestore();
+    var my_table = my_.collection('cities');
+
+    function do_ajax(){
+        my_table_pre = my_.collection('course');
+        var id_ = document.getElementById('id_').value;
+        var name_ = document.getElementById('name_').value;
+        var school_ = document.getElementById('school_').value;
+        if(id_ != ""){
+            my_table_pre = my_table_pre.where("courseID", "==", parseInt(id_));
+        }
+        if(name_ != ""){
+            my_table_pre = my_table_pre.where("courseName", "==", name_);
+        }
+        if(school_ != ""){
+            my_table_pre = my_table_pre.where("university", "==", school_);
+        }
+        my_table_pre
+            .get()
+            .then(function (querySnapshot) {
+                console.log(querySnapshot.docs.length);
+                if(querySnapshot.docs.length>0){
+                    var html_ = "";
+                    html_ += "<table class=\"test\" border='1'>\n" +
+                        "                <thead>\n" +
+                        "                <tr>\n" +
+                        "                    <th style='width:50px;'>ID</th>\n" +
+                        "                    <th style='width:300px;'>Username</th>\n" +
+                        "                    <th style='width:100px;'>code</th>\n" +
+                        "                    <th style='width:300px;'>UniName</th>\n" +
+                        "                </tr>\n" +
+                        "                </thead>\n" +
+                        "                <tbody>";
+                    querySnapshot.forEach(function (doc) {
+                        var temp = doc.data();
+                        console.log(temp);
+                        // doc.data() is never undefined for query doc snapshots
+                        // console.log(doc.id, " => ", doc.data());
+                        child_ = "";
+                        child_ += "<tr>";
+                        child_ += "<td style='text-align: center;'>" +temp.courseID + "</td>";
+                        child_ += "<td style='text-align: center;'>" +temp.courseName + "</td>";
+                        child_ += "<td style='text-align: center;'>" +temp.courseCode + "</td>";
+                        child_ += "<td style='text-align: center;'>" +temp.university + "</td>";
+                        child_ += "</tr>";
+                        html_ += child_;
+                    });
+                    html_ += "</tbody>\n" +
+                        "            </table>";
+                    $('#show_it').html(html_);
+                }else{
+                    $('#show_it').html('');
+                }
+            }).catch(function (error) {
+            console.log("Error getting document:", error);
+        });
+    }
+
+    function add_ajax(){
+        var citiesRef = my_.collection("university");
+
+        var country = document.getElementById('country').value;
+        var logo = document.getElementById('logo').value;
+        var ID = parseInt(document.getElementById('ID').value);
+        var UniName = document.getElementById('UniName').value;
+        var weblink = document.getElementById('weblink').value;
+        if(isNaN(ID)){
+            alert('ID Must be numbers!');
+            return false;
+        }
+        var key_ = uuid();
+        var it = citiesRef.doc(key_).set({
+            country: country,
+            logo: logo,
+            universityID: ID,
+            universityName: UniName,
+            webLink: weblink,
+        })
+            .then(function() {
+            alert("Add successfully!");
+            window.close();
+        })
+            .catch(function(error) {
+                alert('Add failed'+ error);
+                console.error("Error writing document: ", error);
+            });
+    }
+
+    function uuid(len, radix) {
+        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+        var uuid = [], i;
+        radix = radix || chars.length;
+        if (len) {
+            // Compact form
+            for (i = 0; i < len; i++) uuid[i] = chars[0 | Math.random()*radix];
+        } else {
+            // rfc4122, version 4 form
+            var r;
+            // rfc4122 requires these characters
+            uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
+            uuid[14] = '4';
+            // Fill in random data.  At i==19 set the high bits of clock sequence as
+            // per rfc4122, sec. 4.1.5
+            for (i = 0; i < 36; i++) {
+                if (!uuid[i]) {
+                    r = 0 | Math.random()*16;
+                    uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r];
+                }
+            }
+        }
+        return uuid.join('');
+    }
+
+    //database.child().child();
+    var leadsRef = database.ref('leads');
+    // data.on('value', function(snapshot) {
+    // 	snapshot.forEach(function(childSnapshot) {
+    // 	  var childData = childSnapshot.val();
+    // 	});
+    // });
+
+
+    leadsRef.on('child_added', function (snapshot) {
+        //Do something with the data
+    });
+</script>
+</body>
+</html>
