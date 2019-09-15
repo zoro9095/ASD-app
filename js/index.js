@@ -10,20 +10,13 @@ var firebaseConfig = {
   // Initialize Firebase
  firebase.initializeApp(firebaseConfig);
 
- //云端数据库
- var my_db = firebase.firestore();
-
-
-
-
-
 $(document).ready(function() {
 	$( "#loginBtn" ).click(function() {
 		var email = document.getElementById("email").value;
 		var pw = document.getElementById("password").value;
 
 		firebase.auth().signInWithEmailAndPassword(email, pw).catch(function(error) {
-
+		
 			var errorCode = error.code;
 			var errorMessage = error.message;
 			// ...
@@ -33,6 +26,13 @@ $(document).ready(function() {
 });
 
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    window.location = "/postreview";
+  }
+});
+
 // $(document).ready(function() {
 //     $("#postReviewBtn").click(function(){
 //     	var user = admin.auth().currentUser;
@@ -41,7 +41,7 @@ $(document).ready(function() {
 // 		var courseID = document.querySelector("#courseID").value;
 // 		var rating = document.querySelector("#rating").value;
 // 		var review = document.querySelector("#review").value;
-
+		
 // 		db.collection("review").add({
 // 		courseID: courseID,
 // 		university: university,
@@ -49,7 +49,7 @@ $(document).ready(function() {
 // 		stars: rating,
 // 		review: review
 // 		});
-//     });
+//     }); 
 // });
 
 
