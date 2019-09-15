@@ -102,6 +102,9 @@
     <div class="content">
         <div class="title">Register</div>
         <div class="regis">
+            <div class="box">
+                <label>Name:</label><input type="text" id="name" value="" />
+            </div>
             
             <div  class="box">
                 <label>Email:</label><input type="text" id="email" value="" />
@@ -111,7 +114,12 @@
             </div>
             
             <div  class="box">
-                <label>Repeat Password:</label><input type="password" id="pwd2" value="" />
+                <label>RepeatPassword:</label><input type="password" id="pwd2" value="" />
+            </div>
+
+            <div class="box">
+                <span onclick="changePic()" class="cms_login_ver" value="" id="cms_login_ver"></span>
+                <input type="text" placeholder="verification code" class="cms_login_ipt60" id="cms_login_ver_ipt">
             </div>
             
             <button type="button" class="logingBtn" id="loginBtn">Register</button>
@@ -119,5 +127,11 @@
     </div>
 
 <script type="text/javascript" src="./register.js"></script>
+<script>
+    $(".cms_login_ver").text(parseInt(Math.random(0, 9) * (9999 - 1000) + 1000));
+    function changePic() {
+        $(".cms_login_ver").text(parseInt(Math.random(0, 9) * (9999 - 1000) + 1000));
+    };
+</script>
 </body>
 </html>

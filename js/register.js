@@ -14,6 +14,11 @@ var db = firebase.firestore();
 
 $(document).ready(function(){
 	$( "#loginBtn" ).click(function(){
+        if ($("#cms_login_ver").html() != $("#cms_login_ver_ipt").val()) {
+            alert("Verification code error");
+            return;
+        };
+        
         var email = document.getElementById("email").value;
         var pwd = document.getElementById("pwd").value;
         var pwd2 = document.getElementById("pwd2").value;
