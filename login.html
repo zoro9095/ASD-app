@@ -14,7 +14,7 @@ and open the template in the editor.
 	<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/db.js"></script>
 	<script>
 		var my_table = my_db.collection('users');
 		console.log("my_table -->", my_table);
@@ -22,6 +22,16 @@ and open the template in the editor.
 		async function handleSignIn(){
 			var email=$('#email').val();
 			var password=$('#password').val();
+			if (email.length == 0) {
+				alert('The email cannot be empty.');
+				return;
+			}
+			if (password.length == 0 ) {
+				alert('The password cannot be empty.');
+				return;
+			}
+
+
 
 			var citiesRef = await my_db.collection('users')
 			.where("email", "==", email)
