@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<link rel="stylesheet" href="./CSS/login.css">
+	<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./js/index.js"></script>
+	<script>
+		var my_table = my_db.collection('users');
+		console.log("my_table -->", my_table);
+
+		async function handleSignIn(){
+			var email=$('#email').val();
+			var password=$('#password').val();
+
+			var citiesRef = await my_db.collection('users')
+			.where("email", "==", email)
+			.where("password", "==", password)
+			.get()
+			console.log("citiesRef -->", citiesRef);
+
+
+			if(!citiesRef.empty){
+				citiesRef.forEach(function (doc) {
+				    console.log(doc.id, ' => ', doc.data());
+				    var userData = {
+				    	...doc.data(),
+				    	docId:doc.id
+				    }
+				    localStorage.setItem('user', JSON.stringify(userData) )
+				});
+				location.href='index.html'
+			}else{
+				alert('passwrod or email error')
+			}
+
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<div class="container">
+
+		<div class="nav">
+			<ul>
+				<li><a href="index.html">MainPage</a></li>
+			</ul>
+		</div>
+
+
+		<div class="main">
+
+			<div class="sideleft">
+				<h1>Course Review</h1>
+				<h4> 111111</h4>
+				</br></br>
+				<p>111111 </p>
+				<p> 1111111</p>
+
+			</div>
+
+			<div class="sideright">
+				<div class="index">
+					<div >
+						<p class="headline">Login</p>
+						<p class="astyle">Username: </p>
+						<input class="username" name="email" value="757083480@qq.com" id="email" type="text" placeholder="Please input your email">
+						<p class="astyle">Password: </p>
+						<input class="password" type="password" value="asd123" id="password" placeholder="Please input your password">
+						<input type="submit" value="login" id="login" onclick="handleSignIn()">
+                                                </br>
+						<p class="cstyle"><a href="/forgetpwd">Forget Password</a></p>
+						</br></br>
+						<p class="cstyle"><a href="/register">Sign up</a></p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+		<div class="footer">
+				<ul>
+					<li><a href="FAQ.html">About us</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
+
+				</ul>
+
+		</div>
+
+	</div>
+</body>
+</html>
